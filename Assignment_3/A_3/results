@@ -1,0 +1,48 @@
+
+\project_{product_id,product_description,product_finish,standard_price,product_line_id}(\select_{order_id=105} (((CUSTOMER \join ORDERS) \join ORDER_LINE) \join PRODUCT));
+
+-----
+3001|Duplex Book Shelf|White Ash|80|30
+9999|Keyboard|Plastic|20|50
+-----
+Total number of rows: 2
+
+
+\project_{customer_id,customer_name,customer_address,city,state,postal_code}  (\select_{product_description='Book Shelf'}(((CUSTOMER \join ORDERS) \join ORDER_LINE) \join PRODUCT));
+
+-----
+2|Mary Smith|6900 Main St.|San Francisco|CA|94032
+3|Richard Newman|2040 Riverside Rd.|San Diego|CA|92010
+-----
+Total number of rows: 2
+
+
+\project_{order_id,order_date,customer_id,product_id,product_description,product_finish,standard_price,product_line_id}  (\select_{product_finish='White Ash'}(((CUSTOMER \join ORDERS) \join ORDER_LINE) \join PRODUCT));
+
+-----
+103|03-OCT-04|2|4001|Duplex Table Lamp|White Ash|40|40
+105|10-OCT-04|4|3001|Duplex Book Shelf|White Ash|80|30
+107|12-OCT-04|4|4001|Duplex Table Lamp|White Ash|40|40
+-----
+Total number of rows: 3
+
+\project_{product_id,product_description}  (\select_{customer_name='Cathy Cook'}(((CUSTOMER \join ORDERS) \join ORDER_LINE) \join PRODUCT));
+
+-----
+3001|Duplex Book Shelf
+4001|Duplex Table Lamp
+9999|Keyboard
+-----
+Total number of rows: 3
+
+\project_{product_id,product_description}  (\select_{order_date='10-OCT-04'}(((CUSTOMER \join ORDERS) \join ORDER_LINE) \join PRODUCT));
+
+-----
+2000|Office Chair
+3000|Book Shelf
+3001|Duplex Book Shelf
+4000|Table Lamp
+9999|Keyboard
+-----
+Total number of rows: 5
+

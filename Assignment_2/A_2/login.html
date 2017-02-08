@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.error {color:#ff0000;}
+</style>
+</head>
+<body>
+<h1>  Library Management System</h1>
+
+<h2> Administrator</h2>
+<form method="POST" action="admin.php">
+Name: <input type="text" name="name"><br><br>
+Password: <input type="password" name="password"><br><br>
+<input type="submit" name="submit" value="Submit"><br><br>
+</form>
+
+<h2> Teacher</h2>
+<form method="POST" action="teacher.php" >
+Name: <input type="text" name="name"><br><br>
+Password: <input type="password" name="password"><br><br>
+<input type="submit" name="submit" value="Submit"><br><br>
+
+</form>
+
+<h2> Student</h2>
+<form method="POST" action="student.php">
+Name: <input type="text" name="name"><br><br>
+Password: <input type="password" name="password"><br><br>
+<input type="submit" name="submit" value="Submit"><br><br>
+</form>
+
+<form method="POST" action="books.php">
+<a href="books.php"> BOOKS AVAILABILITY </a>
+
+
+
+<?php 
+if ($_SERVER["REQUEST_METHOD"]=="POST")
+{
+$name=input_clear($name);
+$name=$_REQUEST["name"];
+if (empty($name))
+{
+echo "name is required";
+}
+
+
+$password=$_REQUEST["password"];
+if (empty($password))
+{
+echo "password is required";
+}
+
+function input_clear($data)
+{
+$data=stripslashes($data);
+return $data;
+}
+?>
+
+
+
+
+
+
+
+</body>
+</html>
+
+
+
+
